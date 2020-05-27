@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReviewApp</title>
+    <title>LingoRater</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,20 +10,25 @@
   </head>
 
   <body>
-    <h1>Language Course Review App</h1>
     <nav>
+    <h1>LingoRater</h1>
       <%if logged_in?%>
-      <%=link_to "#{current_user_username}", user_path(current_user)%>
-      <%=link_to "Courses", courses_path%>
-      <%=link_to "Authors", authors_path%>
-      <%=link_to "Languages", languages_path%>
-      <%=link_to "Users", users_path%>
-      <%=link_to "Log Out", logout_path, method:'post', action:'destroy'%>
+      <div>
+      <button class="navBtn"><%=link_to "#{current_user_username}", user_path(current_user)%></button>
+      <button class="navBtn"><%=link_to "Courses", courses_path%></button>
+      <button class="navBtn"><%=link_to "Courses", courses_path%></button>
+      <button class="navBtn"><%=link_to "Authors", authors_path%></button>
+      <button class="navBtn"><%=link_to "Languages", languages_path%></button>
+      <button class="navBtn"><%=link_to "Users", users_path%></button>
+      <button class="navBtn"><%=link_to "Log Out", logout_path, method:'post', action:'destroy'%></button>
       <%end%>
+      </div>
       <%if !logged_in?%>
-      <%=link_to "Sign Up", signup_path%>
-      <%=link_to "Log In", login_path%>
+      <div>
+      <button class="navBtn"><%=link_to "Sign Up", signup_path%></button>
+      <button class="navBtn"><%=link_to "Log In", login_path%></button>
       <%end%>
+      </div>
     </nav>
     <%= yield %>
   </body>
