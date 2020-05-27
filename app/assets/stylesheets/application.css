@@ -21,8 +21,7 @@
 }
 
 body {
-  background: url('../images/globe-with-world-flags.png') no-repeat center
-    center;
+  background: url('globe-with-world-flags.png') no-repeat center center;
   background-size: cover;
   height: 100vh;
   width: 100vw;
@@ -32,11 +31,12 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: yellow;
   padding: 1rem;
 }
 
-.navBtn {
+.navElements a {
   background-color: grey;
   border: green solid 1px;
   color: white;
@@ -44,4 +44,35 @@ nav {
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+}
+
+/* Home page styling */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 25vh;
+}
+
+.heading {
+  background: coral;
+  color: white;
+  font-size: 36px;
+}
+
+.openApp {
+  background: coral;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+
+.openApp input {
+  width: 100%;
 }

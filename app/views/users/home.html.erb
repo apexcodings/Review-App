@@ -1,1 +1,35 @@
-<h1>Language Learning Course Review App</h1>
+<div class="container">
+<div class="heading">
+<h1>LingoRater</h1></div>
+<div class="openApp">
+
+<h1>Sign Up</h1>
+
+  <%=form_for @user do |f|%>
+    <%=f.label "Username:"%><br>
+    <%=f.text_field :name%><br>
+    <%=f.label "Password:"%><br>
+    <%=f.password_field :password%><br>
+    <%=f.label "Confirm Your Password:"%><br>
+    <%=f.password_field :password_confirmation%><br><br>
+    <%=f.submit "Sign Up"%>
+  <%end%>
+
+
+
+<%# Have additional login features here %>
+
+<h1>Log In</h1>
+<%= form_for(:session, action: 'create', method: 'post') do |f| %>
+<%=f.label "Name:"%><br>
+<%=f.text_field :name%><br>
+<%=f.label "Password:"%><br>
+<%=f.password_field :password %><br>
+<%= f.submit "Log In"%><br><br>
+<% end %>
+
+<%# Need to add links here to other Oauth logins %>
+</div>
+
+
+</div>
