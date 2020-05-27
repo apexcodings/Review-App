@@ -1,0 +1,15 @@
+<h1>Please Sign Up</h1>
+
+  <%=form_for @user do |f|%>
+    <%=f.label "Username:"%><br>
+    <%=f.text_field :name%><br>
+    <%=f.label "Password:"%><br>
+    <%=f.password_field :password%><br>
+    <%=f.label "Confirm Your Password:"%><br>
+    <%=f.password_field :password_confirmation%><br><br>
+    <%=f.submit "Sign Up"%>
+  <%end%>
+
+
+
+<%# Have additional login features here %>
