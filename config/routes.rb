@@ -4,16 +4,13 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :reviews
+  resources :reviews, only: [:create, :update]
 
   resources :languages
 
   resources :authors
 
   resources :users
-
- 
-  resources :reviews, only: [:create, :update]
 
   root 'users#home'
 
@@ -22,7 +19,7 @@ Rails.application.routes.draw do
   get '/login' => "sessions#new"
   post '/login' => "sessions#create"
   post '/logout' => "sessions#destroy"
-  
+
   # get '/auth/some_platform/callback' => 'sessions#create'
  
 
