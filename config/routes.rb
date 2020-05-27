@@ -1,9 +1,30 @@
 Rails.application.routes.draw do
+
+  resources :courses do 
+    resources :reviews
+  end
+
   resources :reviews
+
   resources :languages
+
   resources :authors
-  resources :courses
+
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+ 
+  resources :reviews, only: [:create, :update]
+
+  root 'users#home'
+
+  get '/signup' => "users#new"
+  post '/users' => "users#create"
+  get '/login' => "sessions#new"
+  post '/login' => "sessions#create"
+  post '/logout' => "sessions#destroy"
+  
+  # get '/auth/some_platform/callback' => 'sessions#create'
+ 
+
   
 end
