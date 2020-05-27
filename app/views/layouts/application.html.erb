@@ -10,7 +10,21 @@
   </head>
 
   <body>
- 
+    <h1>Language Course Review App</h1>
+    <nav>
+      <%if logged_in?%>
+      <%=link_to "#{current_user_first_name}'s Profile", user_path(current_user), id:"profile"%>
+      <%=link_to "Courses", courses_path%>
+      <%=link_to "Authors", authors_path%>
+      <%=link_to "Languages", languages_path%>
+      <%=link_to "Users", users_path%>
+      <%=link_to "Log Out", logout_path, method:'post', action:'destroy'%>
+      <%end%>
+      <%if !logged_in?%>
+      <%=link_to "Sign Up", signup_path%>
+      <%=link_to "Log In", login_path%>
+      <%end%>
+    </nav>
     <%= yield %>
   </body>
 </html>
