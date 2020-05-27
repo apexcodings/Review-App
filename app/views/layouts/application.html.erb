@@ -13,7 +13,7 @@
     <h1>Language Course Review App</h1>
     <nav>
       <%if logged_in?%>
-      <%=link_to "#{current_user}", user_path(current_user)%>
+      <%=link_to "#{current_user_username}", user_path(current_user)%>
       <%=link_to "Courses", courses_path%>
       <%=link_to "Authors", authors_path%>
       <%=link_to "Languages", languages_path%>
