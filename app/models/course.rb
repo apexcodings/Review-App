@@ -11,19 +11,22 @@ class Course < ApplicationRecord
 
 
   def language_name=(name)
-    # can I not do self.language = Language.find_or_create_by(name: name)
-    language = Language.new(name: name)
-    self.language = language
+    self.language = Language.find_or_create_by(name: name)
+    self.save
   end
 
+  def author_name=(name)
+    self.author = Author.find_or_create_by(name: name)
+    self.save
+  end
 
+  def language_name 
+    self.language ? self.language.name : nil
+  end
 
-  author_name=
+  def author_name 
+    self.author ? self.author.name : nil
+  end
 
-
-
-  private 
-
-  strong_params permit the above two 
 
 end
