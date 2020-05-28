@@ -1,0 +1,30 @@
+<%= form_for @course do |f| %>
+<%=f.label "Title:"%>
+<%=f.text_field :title%><br><br>
+<%=f.label "Author:"%>
+  <%= f.text_field :author_name, list: "authors_autocomplete" %>
+  <datalist id="authors_autocomplete">
+    <% Author.all.each do |author| %>
+      <option value="<%= author.name %>"><br>
+    <% end %><br><br>
+  </datalist><br><br>
+  <%=f.label "Genres:"%>
+  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+  <%= f.fields_for :genres, @book.genres.build do |genres_fields| %><br>
+  <%=f.label "Add a New Genre:"%>
+    <%= genres_fields.text_field :name%>
+  <% end %><br><br>
+
+  <%= f.submit%>
+<% end %>
+
+
+   t.string "title"
+    t.integer "author_id"
+    t.string "level"
+    t.integer "language_id"
+    t.integer "year_published"
+    t.string "description"
+    t.integer "pages"
+    t.string "type"
+    t.string "image"
