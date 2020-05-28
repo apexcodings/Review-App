@@ -1,6 +1,17 @@
 <%= form_for @course do |f| %>
 <%=f.label "Title:"%>
 <%=f.text_field :title%><br><br>
+<%=f.label "Level:"%>
+<%=f.text_field :level%><br><br>
+<%=f.label "Pages:"%>
+<%=f.text_field :pages%><br><br>
+<%=f.label "Year Published:"%>
+<%=f.text_field :year_published%><br><br>
+<%=f.label "Type:"%>
+<%=f.text_field :type%><br><br>
+<%=f.label "Description:"%>
+<%=f.text_field :description%><br><br>
+
 <%=f.label "Author:"%>
   <%= f.text_field :author_name, list: "authors_autocomplete" %>
   <datalist id="authors_autocomplete">
@@ -8,23 +19,26 @@
       <option value="<%= author.name %>"><br>
     <% end %><br><br>
   </datalist><br><br>
-  <%=f.label "Genres:"%>
-  <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
-  <%= f.fields_for :genres, @book.genres.build do |genres_fields| %><br>
-  <%=f.label "Add a New Genre:"%>
-    <%= genres_fields.text_field :name%>
-  <% end %><br><br>
+
+
+  <%=f.label "Language:"%>
+   <%= f.text_field :language_name, list: "languages_autocomplete" %>
+  <datalist id="languages_autocomplete">
+    <% Language.all.each do |language| %>
+      <option value="<%= language.name %>"><br>
+    <% end %><br><br>
+  </datalist><br><br>
+
+
+
+  <%= f.fields_for :review, @course.reviews.build do |r| %>
+	<%=r.label "Rating:"%>
+	<%= r.text_field :rating %><br><br>
+  <%=r.label "Review:"%><br>
+  <%= r.text_area :description, cols: "10", rows: "10" %><br>
+  <%end%>
+	
+
 
   <%= f.submit%>
 <% end %>
-
-
-   t.string "title"
-    t.integer "author_id"
-    t.string "level"
-    t.integer "language_id"
-    t.integer "year_published"
-    t.string "description"
-    t.integer "pages"
-    t.string "type"
-    t.string "image"
