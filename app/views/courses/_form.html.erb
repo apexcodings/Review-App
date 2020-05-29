@@ -29,7 +29,7 @@
 
 
 
-  <%= f.fields_for :review, @course.reviews.build do |r| %>
+  <%= f.fields_for :reviews, @course.reviews.build do |r| %>
 	<%=r.label "Rating:"%>
 	<%= r.text_field :rating %><br><br>
   <%=r.label "Review:"%><br>

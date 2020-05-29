@@ -1,1 +1,11 @@
 <h1><%= @course.title %></h1>
+
+<h4><%= @course.language.name %></h4>
+<h3><%= @course.author.name %></h3>
+
+<% @reviews.each do |r|%>
+<h1>Rating: <%= r.rating %></h1>
+<h4>Description: <%= r.description %></h4>
+<%end %>
+
+<%# Link here to add review %>
