@@ -1,0 +1,13 @@
+<div class="displayContainer">
+
+<h1>Courses to learn <%= @language.name%></h1>
+<h2>Click on a course to see its reviews!</h2>
+
+<% @courses.each do |c|%>
+<h3><%= link_to "#{c.title}", course_path(c) %></h3>
+<p>Author/Publisher: <%= c.author.name %></p>
+<p>Level: <%= c.level %></p>
+<p><%= c.reviews.count %> Review(s)</p>
+<%end %>
+
+</div>

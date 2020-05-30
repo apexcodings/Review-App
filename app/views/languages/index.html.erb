@@ -1,0 +1,10 @@
+<div class="displayContainer">
+<h1>Click on a Language to see its Courses!</h1>
+
+<% @languages.each do |language| %>
+<h2><%= link_to "#{language.name}", language_path(language) %></h2>
+<p><%= language.courses.count %> Course(s)</p>
+<% end %>
+
+
+</div>
