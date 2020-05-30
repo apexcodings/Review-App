@@ -1,11 +1,22 @@
+<div class="displayContainer">
+
 <h1><%= @course.title %></h1>
 
-<h4><%= @course.language.name %></h4>
-<h3><%= @course.author.name %></h3>
+<p>Language: <%= @course.language.name %></p>
+<p>Publisher/Author: <%= @course.author.name %></p>
+<p>Level: <%= @course.level %></p>
+<p>Year Published: <%= @course.year_published %></p>
+<p>Description: <%= @course.description %></p>
+<p>Pages: <%= @course.pages %></p>
+
+<hr>
 
 <% @reviews.each do |r|%>
-<h1>Rating: <%= r.rating %></h1>
-<h4>Description: <%= r.description %></h4>
+<h3>Review By: <%= r.user.name %></h3>
+<p>Rating: <%= r.rating %></p>
+<p>Description: <%= r.description %></p>
 <%end %>
 
 <%# Link here to add review %>
+
+</div>
