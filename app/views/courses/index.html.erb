@@ -1,0 +1,12 @@
+<div class="displayContainer">
+<h1>Click on a course to see more details and its reviews!</h1>
+
+<% @courses.each do |course| %>
+<h2><%= link_to "#{course.title}", course_path(course) %></h2>
+<p><%= course.language.name %></p>
+<p><%= course.level %></p>
+<% end %>
+
+
+
+</div>

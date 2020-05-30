@@ -4,6 +4,10 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  def index
+    @courses = Course.all
+  end
+
   def create 
     # binding.pry
     @course = Course.new(course_params)
