@@ -76,3 +76,14 @@ nav {
 .openApp input {
   width: 100%;
 }
+
+/* Styling display container to use on multiple pages */
+.displayContainer {
+  background-color: aqua;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  width: 35%;
+  justify-content: center;
+  padding: 1rem;
+}
