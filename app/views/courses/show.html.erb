@@ -17,7 +17,6 @@
 <p>Description: <%= r.description %></p>
 <%end %>
 
-<%# Link here to add review %>
-<button>Add Review</button>
+<button><%= link_to "Add Review", new_course_review_path(@course) %></button>
 
 </div>
