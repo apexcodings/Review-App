@@ -13,9 +13,10 @@
 <br>
 
 <% @reviews.each do |r|%>
-<h3>Review By: <%= r.user.name %></h3><br>
+<h3>Review By: <%= r.user.name %> (<%= r.user.reviews.count %> Reviews Posted)</h3><br>
 <p>Rating: <%= r.rating %></p><br>
 <p>Description: <%= r.description %></p><br>
+<%= link_to "Click here to see the full review", course_review_path(r.course, r) %><br>
 <hr>
 <br>
 <%end %>

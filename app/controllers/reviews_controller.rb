@@ -12,6 +12,11 @@ class ReviewsController < ApplicationController
     redirect_to course_path(@review.course)
   end
 
+  def show 
+    @review = Review.find(params[:id])
+    @course = @review.course
+  end
+
   private
 
   def review_params

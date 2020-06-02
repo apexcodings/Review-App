@@ -1,0 +1,8 @@
+<div class="displayContainer">
+
+<h1><%= @course.title %></h1>
+<h3>Review By: <%= @review.user.name %></h3><br>
+<p>Rating: <%= @review.rating %></p><br>
+<p>Description: <%= @review.description %></p><br>
+<%= link_to "Return to Course page to see more reviews", course_path(@course) %><br>
+</div>
