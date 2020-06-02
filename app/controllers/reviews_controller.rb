@@ -2,14 +2,14 @@ class ReviewsController < ApplicationController
 
   def new 
     @course = Course.find(params[:course_id])
-    @review = Review.new(course_id: params[:course_id], user_id: current_user.id)
+    @review = @course.reviews.build
   end
 
   def create 
     @review = Review.new(review_params)
-    @course = @review.course
+    @review.user = current_user
     @review.save 
-    redirect_to course_path(@course)
+    redirect_to course_path(@review.course)
   end
 
   private
