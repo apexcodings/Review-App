@@ -8,13 +8,16 @@
 <p>Year Published: <%= @course.year_published %></p>
 <p>Description: <%= @course.description %></p>
 <p>Pages: <%= @course.pages %></p>
-
+<br>
 <hr>
+<br>
 
 <% @reviews.each do |r|%>
-<h3>Review By: <%= r.user.name %></h3>
-<p>Rating: <%= r.rating %></p>
-<p>Description: <%= r.description %></p>
+<h3>Review By: <%= r.user.name %></h3><br>
+<p>Rating: <%= r.rating %></p><br>
+<p>Description: <%= r.description %></p><br>
+<hr>
+<br>
 <%end %>
 
 <button><%= link_to "Add Review", new_course_review_path(@course) %></button>
