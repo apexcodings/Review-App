@@ -1,5 +1,19 @@
 <div class="displayContainer">
 
-<h1>Hello World</h1>
+<h1><%= @course.title %></h1>
+<br>
+<p>Language: <%= @course.language.name %></p>
+
+<br>
+
+<%= form_for(@review) do |f| %>
+  <%= f.hidden_field :user_id %>
+	<%= f.hidden_field :course_id%>
+	<%=f.label "Rating:"%>
+	<%= f.text_field :rating %><br><br>
+  <%=f.label "Review:"%><br>
+  <%= f.text_area :description, cols: "80", rows: "10" %><br>
+  <%=f.submit%>
+	<%end%>
 
 </div>
