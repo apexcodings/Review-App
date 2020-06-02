@@ -9,7 +9,6 @@ class CoursesController < ApplicationController
   end
 
   def create 
-    # binding.pry
     @course = Course.new(course_params)
     @course.reviews.last.user = current_user
     if @course.save 
