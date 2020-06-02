@@ -23,8 +23,28 @@
 body {
   background: url('globe-with-world-flags.png') no-repeat center center;
   background-size: cover;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
   height: 100vh;
   width: 100vw;
+}
+
+input[type='submit'],
+.submit {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.submit a {
+  color: white;
+  text-decoration: none;
 }
 
 nav {
@@ -32,13 +52,13 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: yellow;
+  background-color: #51d1f6;
   padding: 1rem;
 }
 
 .navElements a {
-  background-color: grey;
-  border: green solid 1px;
+  background-color: black;
+
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -56,16 +76,17 @@ nav {
 }
 
 .heading {
-  background: coral;
-  color: white;
+  background: #51d1f6;
+  border: 0.5rem solid black;
+  padding: 1rem;
+  color: black;
   font-size: 36px;
 }
 
 .openApp {
-  background: coral;
+  background: #51d1f6;
   padding: 2.5rem;
-  border: 1px solid black;
-  border-radius: 10%;
+  border: 0.5rem solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,7 +100,8 @@ nav {
 
 /* Styling display container to use on multiple pages */
 .displayContainer {
-  background-color: aqua;
+  background-color: #51d1f6;
+  opacity: 0.95;
   display: flex;
   margin: auto;
   flex-direction: column;

@@ -1,6 +1,6 @@
 <div class="displayContainer">
 
-<h1>Add a new Course Review</h1>
+<h1>Add Course Review</h1><br>
 
 <%= form_for @course do |f| %>
 <%=f.label "Title:"%>
@@ -9,7 +9,7 @@
 <%=f.text_field :level%><br><br>
 <%=f.label "Pages:"%>
 <%=f.text_field :pages%><br><br>
-<%=f.label "Year Published:"%>
+<%=f.label "Published (YYYY):"%>
 <%=f.text_field :year_published%><br><br>
 <%=f.label "Description:"%>
 <%=f.text_field :description%><br><br>
@@ -36,7 +36,7 @@
   <%= f.fields_for :reviews, @course.reviews.build do |r| %>
 	<%=r.label "Rating:"%>
 	<%= r.text_field :rating %><br><br>
-  <%=r.label "Review:"%><br>
+  <%=r.label "Review:"%>
   <%= r.text_area :description, cols: "100", rows: "10" %><br>
   <%end%>
 	
