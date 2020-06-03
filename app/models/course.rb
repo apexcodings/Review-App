@@ -3,6 +3,10 @@ class Course < ApplicationRecord
   belongs_to :language
   has_many :reviews 
   has_many :users, through: :reviews
+  validates :title, :presence true, :uniqueness => {message: "The Course you entered has already been added to the site, please search for the course and add a review to the designated course page"}
+  validates :description, :presence true
+
+
 
   accepts_nested_attributes_for :reviews
 

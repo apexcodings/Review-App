@@ -1,6 +1,13 @@
 <div class="displayContainer">
-<h1>Click on a course to see more details and its reviews!</h1>
+<h1>Click on a course to see reviews!</h1><br>
 
+<h4><strong>Search by Title:</strong></h4>
+
+    <%= form_tag(courses_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag ("Search") %> 
+    <% end %>
+<br>
 <% @courses.each do |course| %>
 <h2><%= link_to "#{course.title}", course_path(course) %></h2>
 <p><%= course.language.name %></p>
