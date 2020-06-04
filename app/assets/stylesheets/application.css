@@ -126,3 +126,7 @@ i {
 .errors {
   background-color: aqua;
 }
+
+.errorMsg {
+  margin-left: 2rem;
+}

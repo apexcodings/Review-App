@@ -6,14 +6,14 @@ class Course < ApplicationRecord
   validates :title, presence: true, :uniqueness => {message: "The Course you entered has already been added to the site, please search for the course and add a review to the designated course page"}
   validates :description, presence: true
   validates_presence_of :author_id, :language_id
-  validate :check_something
+  validate :review_cannot_be_blank
 
 
 
   accepts_nested_attributes_for :reviews
 
 
-  def check_something
+  def review_cannot_be_blank
     if self.reviews != [] && ((self.reviews[0][:rating] == "" || self.reviews[0][:rating] == "") || (self.reviews[0][:description] == "" || self.reviews[0][:description] == ""))
       self.errors.add(:blank_review_error, "You must fill out an entire review")
     end

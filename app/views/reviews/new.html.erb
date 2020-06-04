@@ -2,6 +2,16 @@
 
 <h1><%= @course.title %></h1>
 <br>
+<% if @review.errors.any? %>
+		<ul>
+		<p>Your review has not been saved because:</p>
+    <% @review.errors.full_messages.each do |msg| %>
+        <li class="errorMsg"><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+<br>
+
 <p>Language: <%= @course.language.name %></p>
 
 <br>

@@ -9,8 +9,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     if @review.save 
-    redirect_to course_path(@review.course)
+      redirect_to course_path(@review.course)
     else 
+      @course = @review.course
       render :new
     end 
   end
