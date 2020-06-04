@@ -20,7 +20,7 @@
 
 <h1>Log In</h1>
 <%= form_for(:session, action: 'create', method: 'post') do |f| %>
-<%=f.label "Name:"%><br>
+<%=f.label "Username:"%><br>
 <%=f.text_field :name%><br>
 <%=f.label "Password:"%><br>
 <%=f.password_field :password %><br><br>
