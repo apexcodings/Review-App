@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :authors, through: :courses
   has_many :languages, through: :courses
   validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+
 
   has_secure_password
 
