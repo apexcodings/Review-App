@@ -4,7 +4,7 @@ class Course < ApplicationRecord
   has_many :reviews 
   has_many :users, through: :reviews
   validates :title, presence: true, :uniqueness => {message: "The Course you entered has already been added to the site, please search for the course and add a review to the designated course page"}
-  validates :description, presence: true
+  validates :description, :presence => {message: "for Course can't be blank"}
   validates_presence_of :author_id, :language_id
   validate :review_cannot_be_blank
 
@@ -15,7 +15,7 @@ class Course < ApplicationRecord
 
   def review_cannot_be_blank
     if self.reviews != [] && ((self.reviews[0][:rating] == "" || self.reviews[0][:rating] == "") || (self.reviews[0][:description] == "" || self.reviews[0][:description] == ""))
-      self.errors.add(:blank_review_error, "You must fill out an entire review")
+      self.errors.add(:review_cannot_be_blank, "- you must fill out a complete review")
     end
   end
 
