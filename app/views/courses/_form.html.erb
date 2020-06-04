@@ -34,7 +34,7 @@
 
 
   <%= f.fields_for :reviews, @course.reviews.build do |r| %>
-	<%=r.label "Rating:"%>
+	<%=r.label "Rating (1-5):"%>
 	<%= r.text_field :rating %><br><br>
   <%=r.label "Review:"%>
   <%= r.text_area :description, cols: "100", rows: "10" %><br>

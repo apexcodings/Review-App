@@ -16,9 +16,6 @@
   <%end%>
 <br>
 
-
-<%# Have additional login features here %>
-
 <h1>Log In</h1>
 <%= form_for(:session, action: 'create', method: 'post') do |f| %>
 <%=f.label "Name:"%><br>
@@ -29,6 +26,10 @@
 <% end %>
 
 <%# Need to add links here to other Oauth logins %>
+<div class="fbLogin">
+<%= link_to('Log in with Facebook', '/auth/facebook', class: "fbBtn") %>
+<i class="fab fa-facebook-square"></i>
+</div>
 </div>
 
 

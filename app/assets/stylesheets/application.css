@@ -23,6 +23,7 @@
 body {
   background: url('globe-with-world-flags.png') no-repeat center center;
   background-size: cover;
+  overflow: hidden;
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
@@ -96,6 +97,19 @@ nav {
 
 .openApp input {
   width: 100%;
+}
+
+/* FB Login button */
+.fbLogin {
+  background: #3b5998;
+  padding: 1rem;
+}
+.fbBtn {
+  color: white;
+}
+i {
+  font-size: 25px;
+  color: white;
 }
 
 /* Styling display container to use on multiple pages */
