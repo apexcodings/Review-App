@@ -10,8 +10,11 @@ class CoursesController < ApplicationController
 
   def create 
     @course = Course.new(course_params)
-    @course.reviews.last.user = current_user
-      if @course.save 
+  
+    
+    if @course.reviews.length > 0 && @course.save
+      @course.reviews.last.user = current_user
+      @course.reviews.last.save
          redirect_to course_path(@course)
       else 
          render :new
