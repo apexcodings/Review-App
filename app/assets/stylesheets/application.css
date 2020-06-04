@@ -23,7 +23,7 @@
 body {
   background: url('globe-with-world-flags.png') no-repeat center center;
   background-size: cover;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
@@ -121,4 +121,8 @@ i {
   width: 35%;
   justify-content: center;
   padding: 1rem;
+}
+
+.errors {
+  background-color: aqua;
 }

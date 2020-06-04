@@ -2,6 +2,14 @@
 
 <h1>Add Course Review</h1><br>
 
+<% if @course.errors.any? %>
+		<ul>
+    <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+
 <%= form_for @course do |f| %>
 <%=f.label "Title:"%>
 <%=f.text_field :title%><br><br>
