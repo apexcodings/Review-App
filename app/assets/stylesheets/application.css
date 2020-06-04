@@ -74,6 +74,10 @@ nav {
   align-items: center;
   margin-top: 15vh;
 }
+/* Rules list */
+.rulesList {
+  list-style-type: none;
+}
 
 .heading {
   background: #51d1f6;
