@@ -8,6 +8,8 @@
   <%=form_for @user do |f|%>
     <%=f.label "Username:"%><br>
     <%=f.text_field :name%><br>
+    <%=f.label "Email:"%><br>
+    <%=f.text_field :email%><br>
     <%=f.label "Password:"%><br>
     <%=f.password_field :password%><br>
     <%=f.label :password_confirmation, "Confirm Password:"%><br>
