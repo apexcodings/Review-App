@@ -6,18 +6,8 @@ class Course < ApplicationRecord
   validates :title, presence: true, :uniqueness => {message: "The Course you entered has already been added to the site, please search for the course and add a review to the designated course page"}
   validates :description, :presence => {message: "for Course can't be blank"}
   validates_presence_of :author_id, :language_id
-  # validate :review_cannot_be_blank
 
-
-
-  # accepts_nested_attributes_for :reviews
-
-
-  # def review_cannot_be_blank
-  #   if self.reviews != [] && ((self.reviews[0][:rating] == "" || self.reviews[0][:rating] == "") || (self.reviews[0][:description] == "" || self.reviews[0][:description] == ""))
-  #     self.errors.add(:review_cannot_be_blank, "- you must fill out a complete review")
-  #   end
-  # end
+  scope :most_reviews, -> {joins(:reviews).group(:course_id).order("COUNT(reviews.course_id) DESC").limit(10)}
 
   def reviews_attributes=(hash)
     r = Review.new(hash["0"])
@@ -52,7 +42,7 @@ class Course < ApplicationRecord
     if search
       self.where('title LIKE ?', "%#{search}%")
     else 
-      Course.all
+      Course.most_reviews
     end
   end
 

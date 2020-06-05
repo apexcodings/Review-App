@@ -2,12 +2,13 @@ class AuthorsController < ApplicationController
 
 
   def index
-    if !params[:user_id]
+    if params[:search] != ""
         @authors = Author.search(params[:search]) 
     else
-      @authors = Author.all
+        @authors = Author.most_courses
     end
-end
+  end
+
 
   def show 
       @author = Author.find(params[:id])

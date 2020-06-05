@@ -9,7 +9,7 @@ class Language < ApplicationRecord
     if search
       self.where('name LIKE ?', "%#{search}%")
     else 
-      Language.all
+      Language.most_courses
     end
   end
 end
