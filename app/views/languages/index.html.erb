@@ -1,6 +1,11 @@
 <div class="displayContainer">
-<h1>Click on a Language to see its Courses!</h1>
+<h1>Click on a Language to see its Courses!</h1><br>
 
+<%= form_tag(languages_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag ("Search") %> 
+    <% end %>
+<br>
 <% @languages.each do |language| %>
 <h2><%= link_to "#{language.name}", language_path(language) %></h2>
 <p><%= language.courses.count %> Course(s)</p>

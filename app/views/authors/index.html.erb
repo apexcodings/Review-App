@@ -1,6 +1,11 @@
 <div class="displayContainer">
-<h1>Click on an Author/Publisher to see more details about their courses!</h1>
+<h1>Click on an Author/Publisher to see more details about their courses!</h1><br>
 
+<%= form_tag(authors_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag ("Search") %> 
+    <% end %>
+<br>
 <% @authors.each do |author| %>
 <h2><%= link_to "#{author.name}", author_path(author) %></h2>
 <p><%= author.courses.count %> Course(s)</p>
