@@ -27,7 +27,16 @@ class ReviewsController < ApplicationController
   end
 
   def update 
-
+      @review = Review.find(params[:id])
+      if @review.user_id == current_user.id 
+        @review.update(review_params)
+        @review.save 
+        redirect_to course_review_path(@review.course, @review)
+      else 
+        @review.errors.add(:review_edit, "can only be performed by the user who created the review")
+        @course = @review.course
+        render :edit
+      end
   end
 
   def destroy
