@@ -5,8 +5,12 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
-  end
+    if !params[:user_id]
+        @courses = Course.search(params[:search]) 
+    else
+      @courses = Course.all
+    end
+end
 
   def create 
     @course = Course.new(course_params)

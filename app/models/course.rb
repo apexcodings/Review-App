@@ -48,5 +48,12 @@ class Course < ApplicationRecord
     self.author ? self.author.name : nil
   end
 
+  def self.search(search)
+    if search
+      self.where('title LIKE ?', "%#{search}%")
+    else 
+      Course.all
+    end
+  end
 
 end
