@@ -14,20 +14,15 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    if @course.reviews.length > 0
-      @course.reviews.last.course = @course
-      @course.reviews.last.user = current_user
-      @course.reviews.last.save
-      if @course.save
-         redirect_to course_path(@course)
-         return
-      end
+    @course.reviews.each do |u|
+      u.user = current_user
+      u.save
     end
-    @course.valid?
-    if @course.reviews.length == 0
-      @course.errors.add(:review_must_be_completed, "- you must fill out both review fields, the review must be at least 50 characters long and the rating must be between 1 and 5")
+    if @course.save
+       redirect_to course_path(@course)
+    else
+          render :new
     end
-    render :new
   end
 
   def show 

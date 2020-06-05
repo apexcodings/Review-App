@@ -6,6 +6,7 @@ class Course < ApplicationRecord
   validates :title, presence: true, :uniqueness => {message: "The Course you entered has already been added to the site, please search for the course and add a review to the designated course page"}
   validates :description, :presence => {message: "for Course can't be blank"}
   validates_presence_of :author_id, :language_id
+  validate :review_exists
 
   scope :most_reviews, -> {joins(:reviews).group(:course_id).order("COUNT(reviews.course_id) DESC").limit(10)}
 
@@ -14,9 +15,12 @@ class Course < ApplicationRecord
     r.course = self
     r.valid?
     unless r.errors.keys.include?(:description) || r.errors.keys.include?(:rating)
-      r.course = self
       self.reviews << r
     end
+  end
+
+  def review_exists
+    self.reviews.length == 0 ? self.errors.add(:review_cannot_be_blank, "- you must fill out a complete review") : false
   end
 
   def language_name=(name)
