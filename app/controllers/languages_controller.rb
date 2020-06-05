@@ -2,12 +2,12 @@ class LanguagesController < ApplicationController
 
 
   def index
-    if !params[:user_id]
+    if params[:search] != ""
         @languages = Language.search(params[:search]) 
     else
-      @languages = Language.all
+        @languages = Language.most_courses
     end
-end
+  end
 
   def show 
     @language = Language.find(params[:id])
