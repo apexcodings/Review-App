@@ -21,6 +21,19 @@ class ReviewsController < ApplicationController
     @course = @review.course
   end
 
+  def edit 
+    @review = Review.find(params[:id])
+    @course = @review.course
+  end
+
+  def update 
+
+  end
+
+  def destroy
+
+  end
+
   private
 
   def review_params
