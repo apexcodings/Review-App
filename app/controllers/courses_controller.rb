@@ -12,17 +12,22 @@ class CoursesController < ApplicationController
     end
   end
 
-  def create 
+  def create
     @course = Course.new(course_params)
-  
-    
-    if @course.reviews.length > 0 && @course.save
+    if @course.reviews.length > 0
+      @course.reviews.last.course = @course
       @course.reviews.last.user = current_user
       @course.reviews.last.save
+      if @course.save
          redirect_to course_path(@course)
-      else 
-         render :new
+         return
       end
+    end
+    @course.valid?
+    if @course.reviews.length == 0
+      @course.errors.add(@course.reviews.first)
+    end
+    render :new
   end
 
   def show 

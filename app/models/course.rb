@@ -12,15 +12,12 @@ class Course < ApplicationRecord
   def reviews_attributes=(hash)
     r = Review.new(hash["0"])
     r.course = self
-    r.save
-    binding.pry
-    if r.errors.keys.include?(:description) || r.errors.keys.include?(:rating)
-      self.errors.add(:review_cannot_be_blank, "- you must fill out a complete review")
-    else 
+    r.valid?
+    unless r.errors.keys.include?(:description) || r.errors.keys.include?(:rating)
+      r.course = self
       self.reviews << r
     end
   end
-
 
   def language_name=(name)
     self.language = Language.find_or_create_by(name: name)
