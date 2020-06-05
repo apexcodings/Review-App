@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
     end
     @course.valid?
     if @course.reviews.length == 0
-      @course.errors.add(@course.reviews.first)
+      @course.errors.add(:review_must_be_completed, "- you must fill out both review fields, the review must be at least 50 characters long")
     end
     render :new
   end

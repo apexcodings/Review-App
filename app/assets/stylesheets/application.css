@@ -134,3 +134,9 @@ i {
 .errorMsg {
   margin-left: 2rem;
 }
+
+/* Errors on forms */
+.field_with_errors input {
+  width: 100%;
+  border: 2px solid red;
+}
