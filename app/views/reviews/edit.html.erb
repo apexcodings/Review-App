@@ -24,5 +24,9 @@
   <%= f.text_area :description, cols: "80", rows: "10" %><br><br>
   <%=f.submit%>
 	<%end%>
+  <br>
+  <%= form_tag course_review_path(@review.course, @review), method: "delete" do %>
+	<%= submit_tag "Delete Review" %>
+	<% end %>
 
 </div>

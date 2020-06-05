@@ -23,7 +23,12 @@ class ReviewsController < ApplicationController
 
   def edit 
     @review = Review.find(params[:id])
-    @course = @review.course
+    if @review.user_id == current_user.id 
+      @course = @review.course
+    else 
+      #flash message?
+      redirect_to course_path(@review.course)
+    end
   end
 
   def update 
@@ -40,7 +45,15 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-
+    review = Review.find(params[:id])
+    if current_user.id == review.user_id
+       review.destroy
+       redirect_to user_path(current_user)
+    else
+      @review.errors.add(:review_delete, "can only be performed by the user who created the review")
+      @course = @review.course
+      redirect_to course_review_path(@review.course, @review)
+    end
   end
 
   private
