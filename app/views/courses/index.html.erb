@@ -9,10 +9,10 @@
     <% end %>
 <br>
 <% @courses.each do |course| %>
-<h2><%= link_to "#{course.title}", course_path(course) %></h2>
-<p><%= course.language.name %></p>
-<p><%= course.level %></p>
-<p><%= course.reviews.count%> Review(s)</p>
+    <h2><%= link_to "#{course.title}", course_path(course) %></h2>
+    <p><%= course.language.name %></p>
+    <p><%= course.level %></p>
+    <p><%= course.reviews.count%> Review(s)</p>
 <% end %>
 
 
