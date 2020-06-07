@@ -1,29 +1,9 @@
 <div class="displayContainer">
 
-<h1><%= @course.title %></h1>
-<br>
-<% if @review.errors.any? %>
-		<ul>
-		<p>Your review has not been saved because:</p>
-    <% @review.errors.full_messages.each do |msg| %>
-        <li class="errorMsg"><%= msg %></li>
-    <% end %>
-    </ul>
-<% end %>
-<br>
+  <%= form_tag course_review_path(@review), method: "patch" do %>
+	  <%= render "form" %>
+	<% end %><br>
 
-<p>Language: <%= @course.language.name %></p>
-
-<br>
-
-<%= form_for(@review) do |f| %>
-	<%= f.hidden_field :course_id%>
-	<%=f.label "Rating:"%>
-	<%= f.text_field :rating %><br><br>
-  <%=f.label "Review:"%><br>
-  <%= f.text_area :description, cols: "80", rows: "10" %><br><br>
-  <%=f.submit%>
-	<%end%>
   <br>
   <%= form_tag course_review_path(@review.course, @review), method: "delete" do %>
 	<%= submit_tag "Delete Review" %>
