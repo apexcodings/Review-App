@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
 
+  before_action :require_login
+
   def new 
     @course = Course.new
   end

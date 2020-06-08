@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, except: [:home, :new, :create]
+
   def home 
       if !session[:user_id]
         @user = User.new 
@@ -7,10 +9,6 @@ class UsersController < ApplicationController
         @user = User.find(session[:user_id])
         redirect_to user_path(@user)
       end
-  end
-
-  def index 
-    @users = User.all 
   end
 
   def new 

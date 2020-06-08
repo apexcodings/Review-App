@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :require_login
+
   def new 
     @course = Course.find(params[:course_id])
     @review = @course.reviews.build
@@ -35,7 +37,6 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
       if @review.user_id == current_user.id 
         @review.update(review_params)
-        # maybe need an if statement here ...
         if @review.save 
         redirect_to course_review_path(@review.course, @review)
         else 
@@ -65,5 +66,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :description, :user_id, :course_id)
+  end
+
+  def set_review
+    @review = Review.find(params[:id])
   end
 end
