@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_action :require_login
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def new 
     @course = Course.find(params[:course_id])
@@ -19,12 +20,10 @@ class ReviewsController < ApplicationController
   end
 
   def show 
-    @review = Review.find(params[:id])
     @course = @review.course
   end
 
   def edit 
-    @review = Review.find(params[:id])
     if @review.user_id == current_user.id 
       @course = @review.course
     else 
@@ -34,7 +33,6 @@ class ReviewsController < ApplicationController
   end
 
   def update 
-      @review = Review.find(params[:id])
       if @review.user_id == current_user.id 
         @review.update(review_params)
         if @review.save 
@@ -51,9 +49,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
-    if current_user.id == review.user_id
-       review.destroy
+    if current_user.id == @review.user_id
+       @review.destroy
        redirect_to user_path(current_user)
     else
       @review.errors.add(:review_delete, "can only be performed by the user who created the review")
