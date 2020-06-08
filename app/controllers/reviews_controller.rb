@@ -35,8 +35,13 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
       if @review.user_id == current_user.id 
         @review.update(review_params)
-        @review.save 
+        # maybe need an if statement here ...
+        if @review.save 
         redirect_to course_review_path(@review.course, @review)
+        else 
+          @course = @review.course 
+          render :edit
+        end 
       else 
         @review.errors.add(:review_edit, "can only be performed by the user who created the review")
         @course = @review.course

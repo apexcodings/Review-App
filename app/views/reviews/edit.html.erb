@@ -1,10 +1,10 @@
 <div class="displayContainer">
 
-  <%= form_tag course_review_path(@review), method: "patch" do %>
-	  <%= render "form" %>
-	<% end %><br>
 
-  <br>
+	<%= render "form" %>
+	<br>
+
+
   <%= form_tag course_review_path(@review.course, @review), method: "delete" do %>
 	<%= submit_tag "Delete Review" %>
 	<% end %>
