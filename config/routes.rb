@@ -4,9 +4,6 @@ Rails.application.routes.draw do
     resources :reviews, except: [:index]
   end
 
-  # # Not entirely sure I need any here
-  resources :reviews, only: [:create, :update]
-
   resources :languages, only: [:index, :show]
 
   resources :authors, only: [:index, :show]
