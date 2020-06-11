@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class SessionsController < ApplicationController
   
   def new 
@@ -10,7 +12,8 @@ class SessionsController < ApplicationController
     	session[:user_id] = @user.id
     	redirect_to user_path(@user)
     elsif auth && !User.find_by(email: auth[:info]['email'])
-      @user = User.new(name: auth[:info]['name'], email: auth[:info]['email'], password: "omniauth", password_confirmation: "omniauth")
+      secure_random_password = SecureRandom.hex(10)
+      @user = User.new(name: auth[:info]['name'], email: auth[:info]['email'], password: secure_random_password, password_confirmation: secure_random_password)
       @user.save
       session[:user_id] = @user.id
     	redirect_to user_path(@user)
